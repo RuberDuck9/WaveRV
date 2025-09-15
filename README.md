@@ -43,9 +43,9 @@ I = immediate value
 | DEC, GX | Literal | 00 - 00000000001111 | Perform GX - 1 |
 | DEC, HX | Literal | 00 - 00000000010000 | Perform HX - 1 |
 | HLT | Literal | 00 - 11111111111111 | Halt System Clock |
-| PSH | Single Register | 01 | 00000000000 | XXX | Push X |
-| POP | Single Register | 01 | 00000000001 | XXX | Pop, store to X |
-| NOT | Single Register | 01 | 00000000010 | XXX | Perform ¬ X |
+| PSH | Single Register | 01 - 00000000000 | XXX | Push X |
+| POP | Single Register | 01 - 00000000001 | XXX | Pop, store to X |
+| NOT | Single Register | 01 - 00000000010 | XXX | Perform ¬ X |
 | MOV | Double Register | 10 - 0000000 - XXX - Z - YYY | Perform Y = X |
 | ADD | Double Register | 10 - 0000001 - XXX - Z - YYY | Perform X + Y | 
 | ADC | Double Register | 01 - 0000010 - XXX - Z - YYY | Perform with carry X + Y | 
