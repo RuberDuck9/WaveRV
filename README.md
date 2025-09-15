@@ -42,7 +42,15 @@ I = immediate value
 | DEC, FX | Literal | 00 - 00000000001110 | Perform FX - 1 |
 | DEC, GX | Literal | 00 - 00000000001111 | Perform GX - 1 |
 | DEC, HX | Literal | 00 - 00000000010000 | Perform HX - 1 |
-| HLT | Literal | 00 - 11111111111111 | Halt System Clock |
+| SSF | Literal | 00 - 00000000010001 | Perform SF = 1 |
+| SZF | Literal | 00 - 00000000010010 | Perform ZF = 1 |
+| SCF | Literal | 00 - 00000000010011 | Perform CF = 1 |
+| SIF | Literal | 00 - 00000000010100 | Perform IF = 1 | 
+| CSF | Literal | 00 - 00000000010101 | Perform SF = 0 |
+| CZF | Literal | 00 - 00000000010110 | Perform ZF = 0 |
+| CCF | Literal | 00 - 00000000010111 | Perform CF = 0 |
+| CIF | Literal | 00 - 00000000011000 | Perform IF = 0 | 
+| HLT | Literal | 00 - 11111111111111 | Halt system clock |
 | PSH | Single Register | 01 - 00000000000 - XXX | Push X |
 | POP | Single Register | 01 - 00000000001 - XXX | Pop, store to X |
 | NOT | Single Register | 01 - 00000000010 - XXX | Perform ¬ X |
@@ -55,8 +63,10 @@ I = immediate value
 | AND | Double Register | 01 - 0000110 - XXX - Z - YYY | Perform X ∧ Y | 
 | XOR | Double Register | 01 - 0000111 - XXX - Z - YYY | Perform X ⊕ Y |
 | CMP | Double Register | 01 - 0001000 - XXX - Z - YYY | Compare X to Y, set flags |
+| JPC | Double Register | 01 - 0001001 - FFF - Z - YYY | If F, jump to Y |
+| CLC | Double Register | 01 - 0001001 - FFF - Z - YYY | If F, push PC to stack, perform PC = Y |
 | JMP | Immediate | 10 - 00 - IIIIIIIIIIIIII | Perform PC = I |
-| CAL | Immediate | 10 - 01 - IIIIIIIIIIIIII | Push PC to stack, Perform PC = I |
+| CAL | Immediate | 10 - 01 - IIIIIIIIIIIIII | Push PC to stack, perform PC = I |
 
 
 ## Registers:
@@ -86,11 +96,7 @@ I = immediate value
 - Flags
     - 000 - Sign Flag
     - 001 - Zero Flag
-    - 010 - Auxiliary Carry Flag
-    - 011 - Parity Flag
-    - 100 - Carry Flag
-    - 101 - Overflow Flag
-    - 110 - Interrupt Flag
-    - 111 - Trap Flag
+    - 010 - Carry Flag
+    - 100 - Interrupt Flag
 
 
