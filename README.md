@@ -23,6 +23,9 @@ I = immediate value
 
 ### Opcodes
 
+
+"*" = Privledged Instruction
+
 | Instruction | Format Type | Bit format | Description |
 | ----------- | ----------- | ---------- | ----------- | 
 | NOP | Literal | 00 - 00000000000000 | Do nothing |
@@ -76,8 +79,6 @@ I = immediate value
 | JMP | Immediate | 11 - 00 - IIIIIIIIIIIIII | PC = I |
 | CAL | Immediate | 11 - 01 - IIIIIIIIIIIIII | Push PC, PC = I |
 | INT | Immediate | 11 - 10 - IIIIIIIIIIIIII | IF = 0, Mode = 1, Push PC, PC = *I -> IVT | 
-
-"*" = Privledged Instruction
 
 
 ## Registers:
