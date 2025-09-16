@@ -26,47 +26,49 @@ I = immediate value
 | Instruction | Format Type | Bit format | Description |
 | ----------- | ----------- | ---------- | ----------- | 
 | NOP | Literal | 00 - 00000000000000 | Do nothing |
-| INC, AX | Literal | 00 - 00000000000001 | Perform AX + 1 | 
-| INC, BX | Literal | 00 - 00000000000010 | Perform BX + 1 |
-| INC, CX | Literal | 00 - 00000000000011 | Perform CX + 1 |
-| INC, DX | Literal | 00 - 00000000000100 | Perform DX + 1 |
-| INC, EX | Literal | 00 - 00000000000101 | Perform EX + 1 |
-| INC, FX | Literal | 00 - 00000000000110 | Perform FX + 1 |
-| INC, GX | Literal | 00 - 00000000000111 | Perform GX + 1 |
-| INC, HX | Literal | 00 - 00000000001000 | Perform HX + 1 |
-| DEC, AX | Literal | 00 - 00000000001001 | Perform AX - 1 | 
-| DEC, BX | Literal | 00 - 00000000001010 | Perform BX - 1 |
-| DEC, CX | Literal | 00 - 00000000001011 | Perform CX - 1 |
-| DEC, DX | Literal | 00 - 00000000001100 | Perform DX - 1 |
-| DEC, EX | Literal | 00 - 00000000001101 | Perform EX - 1 |
-| DEC, FX | Literal | 00 - 00000000001110 | Perform FX - 1 |
-| DEC, GX | Literal | 00 - 00000000001111 | Perform GX - 1 |
-| DEC, HX | Literal | 00 - 00000000010000 | Perform HX - 1 |
-| SSF | Literal | 00 - 00000000010001 | Perform SF = 1 |
-| SZF | Literal | 00 - 00000000010010 | Perform ZF = 1 |
-| SCF | Literal | 00 - 00000000010011 | Perform CF = 1 |
-| SIF | Literal | 00 - 00000000010100 | Perform IF = 1 | 
-| CSF | Literal | 00 - 00000000010101 | Perform SF = 0 |
-| CZF | Literal | 00 - 00000000010110 | Perform ZF = 0 |
-| CCF | Literal | 00 - 00000000010111 | Perform CF = 0 |
-| CIF | Literal | 00 - 00000000011000 | Perform IF = 0 | 
+| INC, AX | Literal | 00 - 00000000000001 | AX + 1 | 
+| INC, BX | Literal | 00 - 00000000000010 | BX + 1 |
+| INC, CX | Literal | 00 - 00000000000011 | CX + 1 |
+| INC, DX | Literal | 00 - 00000000000100 | DX + 1 |
+| INC, EX | Literal | 00 - 00000000000101 | EX + 1 |
+| INC, FX | Literal | 00 - 00000000000110 | FX + 1 |
+| INC, GX | Literal | 00 - 00000000000111 | GX + 1 |
+| INC, HX | Literal | 00 - 00000000001000 | HX + 1 |
+| DEC, AX | Literal | 00 - 00000000001001 | AX - 1 | 
+| DEC, BX | Literal | 00 - 00000000001010 | BX - 1 |
+| DEC, CX | Literal | 00 - 00000000001011 | CX - 1 |
+| DEC, DX | Literal | 00 - 00000000001100 | DX - 1 |
+| DEC, EX | Literal | 00 - 00000000001101 | EX - 1 |
+| DEC, FX | Literal | 00 - 00000000001110 | FX - 1 |
+| DEC, GX | Literal | 00 - 00000000001111 | GX - 1 |
+| DEC, HX | Literal | 00 - 00000000010000 | HX - 1 |
+| SSF | Literal | 00 - 00000000010001 | SF = 1 |
+| SZF | Literal | 00 - 00000000010010 | ZF = 1 |
+| SCF | Literal | 00 - 00000000010011 | CF = 1 |
+| SIF | Literal | 00 - 00000000010100 | IF = 1 | 
+| CSF | Literal | 00 - 00000000010101 | SF = 0 |
+| CZF | Literal | 00 - 00000000010110 | ZF = 0 |
+| CCF | Literal | 00 - 00000000010111 | CF = 0 |
+| CIF | Literal | 00 - 00000000011000 | IF = 0 | 
 | HLT | Literal | 00 - 11111111111111 | Halt system clock |
 | PSH | Single Register | 01 - 00000000000 - XXX | Push X |
 | POP | Single Register | 01 - 00000000001 - XXX | Pop, store to X |
-| NOT | Single Register | 01 - 00000000010 - XXX | Perform ¬ X |
-| MOV | Double Register | 10 - 0000000 - XXX - Z - YYY | Perform Y = X |
-| ADD | Double Register | 10 - 0000001 - XXX - Z - YYY | Perform X + Y | 
-| ADC | Double Register | 01 - 0000010 - XXX - Z - YYY | Perform with carry X + Y | 
-| SUB | Double Register | 01 - 0000011 - XXX - Z - YYY | Perform X - Y |
-| SBB | Double Register | 01 - 0000100 - XXX - Z - YYY | Perform with borrow X - Y | 
-| ORR | Double Register | 01 - 0000101 - XXX - Z - YYY | Perform X ∨ Y |
-| AND | Double Register | 01 - 0000110 - XXX - Z - YYY | Perform X ∧ Y | 
-| XOR | Double Register | 01 - 0000111 - XXX - Z - YYY | Perform X ⊕ Y |
+| NOT | Single Register | 01 - 00000000010 - XXX | ¬ X |
+| JPR | Single Register | 01 - 00000000011 - XXX | PC = *X |
+| CLR | Single Register | 01 - 00000000100 - XXX | Push PC to, PC = *X |
+| MOV | Double Register | 10 - 0000000 - XXX - Z - YYY | Y = X |
+| ADD | Double Register | 10 - 0000001 - XXX - Z - YYY | X + Y | 
+| ADC | Double Register | 01 - 0000010 - XXX - Z - YYY | X + Y with carry | 
+| SUB | Double Register | 01 - 0000011 - XXX - Z - YYY | X - Y |
+| SBB | Double Register | 01 - 0000100 - XXX - Z - YYY | X - Y with borrow | 
+| ORR | Double Register | 01 - 0000101 - XXX - Z - YYY | X ∨ Y |
+| AND | Double Register | 01 - 0000110 - XXX - Z - YYY | X ∧ Y | 
+| XOR | Double Register | 01 - 0000111 - XXX - Z - YYY | X ⊕ Y |
 | CMP | Double Register | 01 - 0001000 - XXX - Z - YYY | Compare X to Y, set flags |
-| JPC | Double Register | 01 - 0001001 - FFF - Z - YYY | If F, jump to Y |
-| CLC | Double Register | 01 - 0001001 - FFF - Z - YYY | If F, push PC to stack, perform PC = Y |
-| JMP | Immediate | 10 - 00 - IIIIIIIIIIIIII | Perform PC = I |
-| CAL | Immediate | 10 - 01 - IIIIIIIIIIIIII | Push PC to stack, perform PC = I |
+| JCR | Double Register | 01 - 0001001 - FFF - Z - XXX | If F, jump to *X |
+| CLC | Double Register | 01 - 0001001 - FFF - Z - XXX | If F, push PC, PC = X |
+| JMP | Immediate | 10 - 00 - IIIIIIIIIIIIII | PC = I |
+| CAL | Immediate | 10 - 01 - IIIIIIIIIIIIII | Push PC, PC = I |
 
 
 ## Registers:
