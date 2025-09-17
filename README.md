@@ -48,11 +48,11 @@ I = immediate value
 | SSF | Literal | 00 - 00000000010001 | SF = 1 |
 | SZF | Literal | 00 - 00000000010010 | ZF = 1 |
 | SCF | Literal | 00 - 00000000010011 | CF = 1 |
-| SIF | Literal | 00 - 00000000010100 | IF = 1 | 
+| *SIF | Literal | 00 - 00000000010100 | IF = 1 | 
 | CSF | Literal | 00 - 00000000010101 | SF = 0 |
 | CZF | Literal | 00 - 00000000010110 | ZF = 0 |
 | CCF | Literal | 00 - 00000000010111 | CF = 0 |
-| CIF | Literal | 00 - 00000000011000 | IF = 0 | 
+| *CIF | Literal | 00 - 00000000011000 | IF = 0 | 
 | *INN | Literal | 00 - 00000000011001 | *IX = OX |
 | *OUT | Literal | 00 - 00000000011010 | *OX = IX |
 | *RET | Literal | 00 - 00000000011011 | IF = 1, Mode = 0, Pop, store to PC | 
