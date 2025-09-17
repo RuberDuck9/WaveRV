@@ -65,17 +65,18 @@ I = immediate value
 | *SMB | Single Register | 01 - 00000000101 - XXX | MBR = X | 
 | *SML | Single Register | 01 - 00000000110 - XXX | MLR = X | 
 | *STQ | Single Register | 01 - 00000000111 - XXX | TQR = X | 
-| MOV | Double Register | 10 - 0000000 - XXX - Z - YYY | Y = X |
-| ADD | Double Register | 10 - 0000001 - XXX - Z - YYY | X + Y | 
-| ADC | Double Register | 01 - 0000010 - XXX - Z - YYY | X + Y with carry | 
-| SUB | Double Register | 01 - 0000011 - XXX - Z - YYY | X - Y |
-| SBB | Double Register | 01 - 0000100 - XXX - Z - YYY | X - Y with borrow | 
-| ORR | Double Register | 01 - 0000101 - XXX - Z - YYY | X ∨ Y |
-| AND | Double Register | 01 - 0000110 - XXX - Z - YYY | X ∧ Y | 
-| XOR | Double Register | 01 - 0000111 - XXX - Z - YYY | X ⊕ Y |
-| CMP | Double Register | 01 - 0001000 - XXX - Z - YYY | Compare X to Y, set flags |
-| JCR | Double Register | 01 - 0001001 - FFF - Z - XXX | If F, jump to *X |
-| CLC | Double Register | 01 - 0001001 - FFF - Z - XXX | If F, push PC, PC = X |
+| MOV | Double Register | 10 - 0000000 - Z- XXX - YYY | Y = X |
+| STR | Double Register | 10 - 0000001 - XXX - Z - YYY | Y = X |
+| ADD | Double Register | 10 - 0000010 - XXX - Z - YYY | X + Y | 
+| ADC | Double Register | 01 - 0000011 - XXX - Z - YYY | X + Y with carry | 
+| SUB | Double Register | 01 - 0000100 - XXX - Z - YYY | X - Y |
+| SBB | Double Register | 01 - 0000101 - XXX - Z - YYY | X - Y with borrow | 
+| ORR | Double Register | 01 - 0000110 - XXX - Z - YYY | X ∨ Y |
+| AND | Double Register | 01 - 0000111 - XXX - Z - YYY | X ∧ Y | 
+| XOR | Double Register | 01 - 0001000 - XXX - Z - YYY | X ⊕ Y |
+| CMP | Double Register | 01 - 0001001 - XXX - Z - YYY | Compare X to Y, set flags |
+| JCR | Double Register | 01 - 0001010 - FFF - Z - XXX | If F, jump to *X |
+| CLC | Double Register | 01 - 0001011 - FFF - Z - XXX | If F, push PC, PC = X |
 | JMP | Immediate | 11 - 00 - IIIIIIIIIIIIII | PC = I |
 | CAL | Immediate | 11 - 01 - IIIIIIIIIIIIII | Push PC, PC = I |
 | INT | Immediate | 11 - 10 - IIIIIIIIIIIIII | IF = 0, Mode = 1, Push PC, PC = *I -> IVT | 
