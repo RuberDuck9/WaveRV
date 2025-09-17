@@ -8,6 +8,7 @@ The goal of this isa is to be simple, but also powerful. Beyond simply being tur
 ## Instructions 
 
 ### Format
+The instruction word size is two bytes. There are four different formats of instructions depending on the type of operation they perform.
  
 Format 1: Literal      
 | 00 - 00000000000000 |   
