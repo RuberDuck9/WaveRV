@@ -52,10 +52,11 @@ I = immediate value
 | CSF | Literal | 00 - 00000000010101 | SF = 0 |
 | CZF | Literal | 00 - 00000000010110 | ZF = 0 |
 | CCF | Literal | 00 - 00000000010111 | CF = 0 |
-| *CIF | Literal | 00 - 00000000011000 | IF = 0 | 
-| *INN | Literal | 00 - 00000000011001 | *IX = OX |
-| *OUT | Literal | 00 - 00000000011010 | *OX = IX |
-| *RET | Literal | 00 - 00000000011011 | IF = 1, Mode = 0, Pop, store to PC | 
+| RET | Literal | 00 - 00000000011000 | Pop, store to PC | 
+| *CIF | Literal | 00 - 00000000011001 | IF = 0 | 
+| *INN | Literal | 00 - 00000000011010 | *IX = OX |
+| *OUT | Literal | 00 - 00000000011011 | *OX = IX |
+| *IRT | Literal | 00 - 00000000011100 | IF = 1, Mode = 0, Pop, store to PC | 
 | *HLT | Literal | 00 - 11111111111111 | Halt system clock |
 | PSH | Single Register | 01 - 00000000000 - XXX | Push X |
 | POP | Single Register | 01 - 00000000001 - XXX | Pop, store to X |
@@ -106,7 +107,6 @@ Unlike gp registers, most of these cannot be written to directly, at least witho
 - Memory Limit Register - the last memory address that an unprivledged process access is permited to
 - Time Quantum Register - how many clocks until an interrupt will be triggered
 - Stack Pointer
-- Stack Base
 - Mode (1)
 - Flags
     - 000 - Sign Flag
