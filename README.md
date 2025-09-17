@@ -84,7 +84,7 @@ I = immediate value
 
 ## Registers:
 
-### General Purpose (16):
+### General Purpose:
 
 - AX - 000 - alu accumulator
 - BX - 001 - immediate
@@ -96,6 +96,7 @@ I = immediate value
 - OX - 111 - io out
 
 ### Special:
+Unlike gp registers, most of these cannot be written to directly, at least without privledged access.
 
 - Instruction Register - holds the instruction which is currently being executed
 - Program Counter - address of next instruction to be fetched
