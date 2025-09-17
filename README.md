@@ -72,6 +72,7 @@ I = immediate value
 | *SMB | Single Register | 01 - 00000000101 - XXX | MBR = X | 
 | *SML | Single Register | 01 - 00000000110 - XXX | MLR = X | 
 | *STQ | Single Register | 01 - 00000000111 - XXX | TQR = X | 
+| *SSB | Single Register | 01 - 00000001000 - XXX | SBR = X | 
 | MOV | Double Register | 10 - 0000000 - Z- XXX - YYY | Y = X |
 | STR | Double Register | 10 - 0000001 - XXX - Z - YYY | Y = X |
 | ADD | Double Register | 10 - 0000010 - XXX - Z - YYY | X + Y | 
@@ -112,6 +113,7 @@ Unlike gp registers, most of these cannot be written to directly, at least witho
 - Memory Base Register - the first memory address that an unprivledged process access is permited to 
 - Memory Limit Register - the last memory address that an unprivledged process access is permited to
 - Time Quantum Register - how many clocks until an interrupt will be triggered
+- Stack Base Register
 - Stack Pointer
 - Mode (1)
 - Flags
