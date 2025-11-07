@@ -38,44 +38,46 @@ F = Flag Register Address
 
 | Instruction | Format Type | Bit format | Description |
 | ----------- | ----------- | ---------- | ----------- | 
-| NOP | Literal | 00 - 00000000 - UUUUUUU | Do nothing |
-| SSF | Literal | 00 - 0000001 - UUUUUUU | SF = 1 |
-| SZF | Literal | 00 - 0000010 - UUUUUUU | ZF = 1 |
-| SCF | Literal | 00 - 0000011 - UUUUUUU | CF = 1 |
-| *SIF | Literal | 00 - 0000100 - UUUUUUU | IF = 1 | 
-| CSF | Literal | 00 - 0000101 - UUUUUUU | SF = 0 |
-| CZF | Literal | 00 - 0000110 - UUUUUUU | ZF = 0 |
-| CCF | Literal | 00 - 0000111 - UUUUUUU | CF = 0 |
-| RET | Literal | 00 - 0001000 - UUUUUUU | Pop, store to PC | 
-| *CIF | Literal | 00 - 0001001 - UUUUUUU | IF = 0 | 
-| *INN | Literal | 00 - 0001010 - UUUUUUU | *IX = OX |
-| *OUT | Literal | 00 - 0001011 - UUUUUUU | *OX = IX |
-| *IRT | Literal | 00 - 0001100 - UUUUUUU | IF = 1, Mode = 0, Pop, store to PC | 
-| *HLT | Literal | 00 - 1111111 - UUUUUUU | Halt system clock |
-| PSH | Single Register | 01 - 00000000 - UUU - XXX | Push X |
-| POP | Single Register | 01 - 00000000 - UUU - XXX | Pop, store to X |
-| NOT | Single Register | 01 - 00000000 - UUU - XXX | ¬ X |
-| JPR | Single Register | 01 - 00000000 - UUU - XXX | PC = *X |
-| CLR | Single Register | 01 - 00000000 - UUU - XXX | Push PC to, PC = *X |
-| *SMB | Single Register | 01 - 00000000 - UUU - XXX | MBR = X | 
-| *SML | Single Register | 01 - 00000000 - UUU - XXX | MLR = X | 
-| *STQ | Single Register | 01 - 00000000 - UUU - XXX | TQR = X | 
-| *SSB | Single Register | 01 - 00000000 - UUU - XXX | SBR = X | 
+| NOP | Literal | 00 - 00000000 - UUUUUU | Do nothing |
+| SSF | Literal | 00 - 00000001 - UUUUUU | SF = 1 |
+| SZF | Literal | 00 - 00000010 - UUUUUU | ZF = 1 |
+| SCF | Literal | 00 - 00000011 - UUUUUU | CF = 1 |
+| CSF | Literal | 00 - 00000100 - UUUUUU | SF = 0 |
+| CZF | Literal | 00 - 00000101 - UUUUUU | ZF = 0 |
+| CCF | Literal | 00 - 00000110 - UUUUUU | CF = 0 |
+| RET | Literal | 00 - 00000111 - UUUUUU | Pop, store to PC | 
+| *SIF | Literal | 00 - 00001000 - UUUUUU | IF = 1 | 
+| *CIF | Literal | 00 - 00001001 - UUUUUU | IF = 0 | 
+| *INN | Literal | 00 - 00001010 - UUUUUU | *IX = OX |
+| *OUT | Literal | 00 - 00001011 - UUUUUU | *OX = IX |
+| *IRT | Literal | 00 - 00001100 - UUUUUU | IF = 1, Mode = 0, Pop, store to PC | 
+| *HLT | Literal | 00 - 11111111 - UUUUUU | Halt system clock |
 | INC | Single Register | 01 - 00000000 - UUU - XXX | X + 1 |
-| DEC | Single Register | 01 - 00000000 - UUU - XXX | X - 1 |
-| MOV | Double Register | 10 - 00000000 - XXX - YYY | Y = X |
-| STR | Double Register | 10 - 00000000 - XXX - *YYY | Y = X |
-| LOD | Double Register | 10 - 00000000 - *XXX - YYY | Y = X | 
-| ADD | Double Register | 10 - 00000000 - XXX - YYY | X + Y | 
-| ADC | Double Register | 01 - 00000000 - XXX - YYY | X + Y with carry | 
-| SUB | Double Register | 01 - 00000000 - XXX - YYY | X - Y |
-| SBB | Double Register | 01 - 00000000 - XXX - YYY | X - Y with borrow | 
-| ORR | Double Register | 01 - 00000000 - XXX - YYY | X ∨ Y |
-| AND | Double Register | 01 - 00000000 - XXX - YYY | X ∧ Y | 
-| XOR | Double Register | 01 - 00000000 - XXX - YYY | X ⊕ Y |
-| CMP | Double Register | 01 - 00000000 - XXX - YYY | Compare X to Y, set flags |
-| JCR | Double Register | 01 - 00000000 - FFF - XXX | If F, jump to *X |
-| CLC | Double Register | 01 - 00000000 - FFF - XXX | If F, push PC, PC = X |
+| DEC | Single Register | 01 - 00000001 - UUU - XXX | X - 1 |
+| PSH | Single Register | 01 - 00000010 - UUU - XXX | Push X |
+| POP | Single Register | 01 - 00000011 - UUU - XXX | Pop, store to X |
+| NOT | Single Register | 01 - 00000100 - UUU - XXX | ¬ X |
+| JPR | Single Register | 01 - 00000101 - UUU - XXX | PC = *X |
+| CLR | Single Register | 01 - 00000110 - UUU - XXX | Push PC to, PC = *X |
+| *SMB | Single Register | 01 - 00000111 - UUU - XXX | MBR = X | 
+| *SML | Single Register | 01 - 00001000 - UUU - XXX | MLR = X | 
+| *STQ | Single Register | 01 - 00001001 - UUU - XXX | TQR = X | 
+| *SSB | Single Register | 01 - 00001010 - UUU - XXX | SBR = X | 
+| MOV | Double Register | 10 - 00000000 - XXX - YYY | X = Y |
+| STR | Double Register | 10 - 00000001 - XXX - *YYY | X = Y |
+| LOD | Double Register | 10 - 00000010 - *XXX - YYY | X = Y | 
+| ADD | Double Register | 10 - 00000011 - XXX - YYY | X + Y | 
+| ADC | Double Register | 01 - 00000100 - XXX - YYY | X + Y with carry | 
+| SUB | Double Register | 01 - 00000101 - XXX - YYY | X - Y |
+| SBB | Double Register | 01 - 00000110 - XXX - YYY | X - Y with borrow | 
+| ORR | Double Register | 01 - 00000111 - XXX - YYY | X ∨ Y |
+| AND | Double Register | 01 - 00001000 - XXX - YYY | X ∧ Y | 
+| XOR | Double Register | 01 - 00001001 - XXX - YYY | X ⊕ Y |
+| CMP | Double Register | 01 - 00001010 - XXX - YYY | Compare X to Y, set flags |
+| JCR | Double Register | 01 - 00001011 - FFF - XXX | If F, jump to *X |
+| JCN | Double Register | 01 - 00001100 - FFF - XXX | If ¬F, jump to *X |
+| CLC | Double Register | 01 - 00001101 - FFF - XXX | If F, push PC, PC = X |
+| CCN | Double Register | 01 - 00001110 - FFF - XXX | If ¬F, push PC, PC = X |
 | JMP | Immediate | 11 - 00 - IIIIIIIIIIIIII | PC = I |
 | CAL | Immediate | 11 - 01 - IIIIIIIIIIIIII | Push PC, PC = I |
 | INT | Immediate | 11 - 10 - IIIIIIIIIIIIII | IF = 0, Mode = 1, Push PC, PC = *I -> IVT | 
