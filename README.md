@@ -37,34 +37,18 @@ I = immediate value
 | Instruction | Format Type | Bit format | Description |
 | ----------- | ----------- | ---------- | ----------- | 
 | NOP | Literal | 00 - 00000000000000 | Do nothing |
-| INC, AX | Literal | 00 - 00000000000001 | AX + 1 | 
-| INC, BX | Literal | 00 - 00000000000010 | BX + 1 |
-| INC, CX | Literal | 00 - 00000000000011 | CX + 1 |
-| INC, DX | Literal | 00 - 00000000000100 | DX + 1 |
-| INC, EX | Literal | 00 - 00000000000101 | EX + 1 |
-| INC, FX | Literal | 00 - 00000000000110 | FX + 1 |
-| INC, GX | Literal | 00 - 00000000000111 | GX + 1 |
-| INC, HX | Literal | 00 - 00000000001000 | HX + 1 |
-| DEC, AX | Literal | 00 - 00000000001001 | AX - 1 | 
-| DEC, BX | Literal | 00 - 00000000001010 | BX - 1 |
-| DEC, CX | Literal | 00 - 00000000001011 | CX - 1 |
-| DEC, DX | Literal | 00 - 00000000001100 | DX - 1 |
-| DEC, EX | Literal | 00 - 00000000001101 | EX - 1 |
-| DEC, FX | Literal | 00 - 00000000001110 | FX - 1 |
-| DEC, GX | Literal | 00 - 00000000001111 | GX - 1 |
-| DEC, HX | Literal | 00 - 00000000010000 | HX - 1 |
-| SSF | Literal | 00 - 00000000010001 | SF = 1 |
-| SZF | Literal | 00 - 00000000010010 | ZF = 1 |
-| SCF | Literal | 00 - 00000000010011 | CF = 1 |
-| *SIF | Literal | 00 - 00000000010100 | IF = 1 | 
-| CSF | Literal | 00 - 00000000010101 | SF = 0 |
-| CZF | Literal | 00 - 00000000010110 | ZF = 0 |
-| CCF | Literal | 00 - 00000000010111 | CF = 0 |
-| RET | Literal | 00 - 00000000011000 | Pop, store to PC | 
-| *CIF | Literal | 00 - 00000000011001 | IF = 0 | 
-| *INN | Literal | 00 - 00000000011010 | *IX = OX |
-| *OUT | Literal | 00 - 00000000011011 | *OX = IX |
-| *IRT | Literal | 00 - 00000000011100 | IF = 1, Mode = 0, Pop, store to PC | 
+| SSF | Literal | 00 - 00000000000001 | SF = 1 |
+| SZF | Literal | 00 - 00000000000010 | ZF = 1 |
+| SCF | Literal | 00 - 00000000000011 | CF = 1 |
+| *SIF | Literal | 00 - 000000000000100 | IF = 1 | 
+| CSF | Literal | 00 - 00000000000101 | SF = 0 |
+| CZF | Literal | 00 - 00000000000110 | ZF = 0 |
+| CCF | Literal | 00 - 00000000000111 | CF = 0 |
+| RET | Literal | 00 - 00000000001000 | Pop, store to PC | 
+| *CIF | Literal | 00 - 00000000001001 | IF = 0 | 
+| *INN | Literal | 00 - 00000000001010 | *IX = OX |
+| *OUT | Literal | 00 - 00000000001011 | *OX = IX |
+| *IRT | Literal | 00 - 00000000001111 | IF = 1, Mode = 0, Pop, store to PC | 
 | *HLT | Literal | 00 - 11111111111111 | Halt system clock |
 | PSH | Single Register | 01 - 00000000000 - XXX | Push X |
 | POP | Single Register | 01 - 00000000001 - XXX | Pop, store to X |
@@ -75,6 +59,8 @@ I = immediate value
 | *SML | Single Register | 01 - 00000000110 - XXX | MLR = X | 
 | *STQ | Single Register | 01 - 00000000111 - XXX | TQR = X | 
 | *SSB | Single Register | 01 - 00000001000 - XXX | SBR = X | 
+| INC | Single Registrer | 01 - 00000001001 - XXX | X + 1 |
+| DEC | Single Registrer | 01 - 00000001010 - XXX | X + 1 |
 | MOV | Double Register | 10 - 0000000 - Z- XXX - YYY | Y = X |
 | STR | Double Register | 10 - 0000001 - XXX - Z - YYY | Y = X |
 | ADD | Double Register | 10 - 0000010 - XXX - Z - YYY | X + Y | 
