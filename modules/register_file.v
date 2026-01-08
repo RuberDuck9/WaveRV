@@ -26,13 +26,13 @@ always @(posedge clk) begin
 	if (register_write_enable) begin
 		register_file[register_write_address] <= register_write_data;
 
-        if (register_write_address == register_read_address_a) begin
-            register_read_data_a <= register_write_data; // Write-before-read explicit implementation
-        end
+		if (register_write_address == register_read_address_a) begin
+		    register_read_data_a <= register_write_data; // Write-before-read explicit implementation
+		end
 
-        if (register_write_address == register_read_address_b) begin
-            register_read_data_b <= register_write_data; // Write-before-read explicit implementation
-        end  
+		if (register_write_address == register_read_address_b) begin
+		    register_read_data_b <= register_write_data; // Write-before-read explicit implementation
+		end  
 
 	end 
     

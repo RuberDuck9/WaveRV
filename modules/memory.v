@@ -4,14 +4,15 @@
 
 module memory (
 	input clk_a,
-    input memory_write_enable_a,
-    input [31:0] memory_access_address_a,
-    input [31:0] memory_write_data_a,
+	input memory_write_enable_a,
+	input [31:0] memory_access_address_a,
+	input [31:0] memory_write_data_a,
 	output reg [31:0] memory_read_data_a,
-    input clk_b,
-    input memory_write_enable_b,
-    input [31:0] memory_access_address_b,
-    input [31:0] memory_write_data_b,
+	
+	input clk_b,
+	input memory_write_enable_b,
+	input [31:0] memory_access_address_b,
+	input [31:0] memory_write_data_b,
 	output reg [31:0] memory_read_data_b
 );
 
