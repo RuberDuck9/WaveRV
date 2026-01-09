@@ -10,7 +10,7 @@ module program_counter(
 
 always @(posedge clk) begin
 
-	if (rst) begin
+	if (~rst) begin
 			program_counter <= 32'b0;
 	end
 	else begin 

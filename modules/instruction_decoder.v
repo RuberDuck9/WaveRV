@@ -10,6 +10,8 @@ module instruction_decoder(
 	output wire [4:0] register_write_address,
 	output wire [4:0] register_read_address_a,
 	output wire [4:0] register_read_address_b,
+	output wire data_memory_write_enable,
+	output wire data_memory_write_back_enable,
 	output reg [3:0] alu_operation
 );
 
@@ -30,6 +32,12 @@ wire load_upper_immediate_operation   = (instruction_register[6:2] == 5'b01101);
 wire load_operation                   = (instruction_register[6:2] == 5'b00000); // rd <- memory[rs1 + Iimm]
 wire store_operation                  = (instruction_register[6:2] == 5'b01000); // memory[rs1 + Simm] <- rs2
 wire system_operation                 = (instruction_register[6:2] == 5'b11100); // reserved
+
+// ---------- Memory Access Control ----------
+
+assign data_memory_write_enable = store_operation ? 1'b1 : 1'b0;
+
+assign data_memory_write_back_enable = load_operation ? 1'b1 : 1'b0;
 
 // ---------- ALU Operation Control ----------
 

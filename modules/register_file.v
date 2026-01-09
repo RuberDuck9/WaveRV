@@ -6,13 +6,19 @@ module register_file(
 	input wire clk,
 	input wire rst,
 	input wire register_write_enable,
+	input wire data_memory_write_back_enable,
 	input wire [4:0] register_write_address,
 	input wire [4:0] register_read_address_a,
 	input wire [4:0] register_read_address_b,
-	input wire [31:0] register_write_data,
-	output reg [31:0] register_read_data_a,
-	output reg [31:0] register_read_data_b
+	input wire [31:0] alu_out,
+	input wire [31:0] data_memory_read_data,
+	output wire [31:0] register_read_data_a,
+	output wire [31:0] register_read_data_b
 );
+
+// -------- Memory Write Back Control --------
+
+wire [31:0] register_write_data = data_memory_write_back_enable ? data_memory_read_data : alu_out;
 
 // -------------- Register File --------------
 
@@ -20,30 +26,18 @@ reg [31:0] register_file [0:31];
 
 // ---------------- W/R Logic ----------------
 
-integer i;
+assign register_read_data_a = register_file[register_read_address_a];
+assign register_read_data_b = register_file[register_read_address_b];
 
 always @(posedge clk) begin
 
-	if (rst) begin
-		for (i = 0; i < 32; i = i + 1)
+	if (~rst) begin
+		for (integer i = 0; i < 32; i = i + 1)
 			register_file[i] <= 32'b0;
-	end 
-	else begin
-
-		register_read_data_a <= register_file[register_read_address_a];
-    	register_read_data_b <= register_file[register_read_address_b];
+	end else begin
 
 		if (register_write_enable) begin
 			register_file[register_write_address] <= register_write_data;
-
-			if (register_write_address == register_read_address_a) begin
-				register_read_data_a <= register_write_data; // Write-before-read explicit implementation
-			end
-
-			if (register_write_address == register_read_address_b) begin
-				register_read_data_b <= register_write_data; // Write-before-read explicit implementation
-			end  
-
 		end
 
 	end 

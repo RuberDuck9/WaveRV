@@ -17,11 +17,9 @@ wire [31:0] alu_input_1 = register_read_data_a;
 wire [31:0] alu_input_2 = alu_immediate_enable ? immediate_data : register_read_data_b;
 
 always @(*) begin
-
-	if (rst) begin
+	if (~rst) begin
 		alu_out <= 32'b0;
-	end
-	else begin
+	end else begin
 		case(alu_operation)
 			4'b0001: alu_out <= (alu_input_1 - alu_input_2); // sub
 			4'b0000: alu_out <= (alu_input_1 + alu_input_2); // add

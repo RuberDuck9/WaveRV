@@ -13,8 +13,8 @@ module waverv (
 wire [31:0] program_counter;
 
 // Memory
-wire [31:0] memory_read_data_a;
-wire [31:0] memory_read_data_b;
+wire [31:0] instruction_memory_read_data;
+wire [31:0] data_memory_read_data;
 
 // Instruction Register
 wire [31:0] instruction_register;
@@ -26,6 +26,8 @@ wire [2:0] immediate_select;
 wire [4:0] register_write_address;
 wire [4:0] register_read_address_a;
 wire [4:0] register_read_address_b;
+wire data_memory_write_enable;
+wire data_memory_write_back_enable;
 wire [3:0] alu_operation;
 
 // Register File
@@ -47,18 +49,27 @@ program_counter program_counter_inst(
 	.program_counter(program_counter)
 );
 
-memory memory_inst (
-	.clk_a(clk),
-	.memory_write_enable_a(1'b0),
-	.memory_access_address_a(program_counter),
-	.memory_write_data_a(32'b0),
-	.memory_read_data_a(memory_read_data_a)
+instruction_memory instruction_memory_inst (
+	.clk(clk),
+	.instruction_memory_write_enable(1'b0),
+	.instruction_memory_access_address(program_counter),
+	.instruction_memory_write_data(32'b0),
+	.instruction_memory_read_data(instruction_memory_read_data)
+);
+
+data_memory data_memory_inst (
+	.clk(clk),
+	.rst(rst),
+	.data_memory_write_enable(data_memory_write_enable),
+	.data_memory_access_address(alu_out),
+	.data_memory_write_data(register_read_data_b),
+	.data_memory_read_data(data_memory_read_data)
 );
 
 instruction_register instruction_register_inst (
 	.clk(clk),
 	.rst(rst),
-	.memory_read_data_a(memory_read_data_a),
+	.instruction_memory_read_data(instruction_memory_read_data),
 	.instruction_register(instruction_register)
 );
 
@@ -70,16 +81,21 @@ instruction_decoder instruction_decoder_inst (
 	.register_write_address(register_write_address),
 	.register_read_address_a(register_read_address_a),
 	.register_read_address_b(register_read_address_b),
+	.data_memory_write_enable(data_memory_write_enable),
+	.data_memory_write_back_enable(data_memory_write_back_enable),
 	.alu_operation(alu_operation)
 );
 
 register_file register_file_inst (
 	.clk(clk),
+	.rst(rst),
 	.register_write_enable(register_write_enable),
 	.register_write_address(register_write_address),
 	.register_read_address_a(register_read_address_a),
 	.register_read_address_b(register_read_address_b),
-	.register_write_data(alu_out),
+	.data_memory_write_back_enable(data_memory_write_back_enable),
+	.alu_out(alu_out),
+	.data_memory_read_data(data_memory_read_data),
 	.register_read_data_a(register_read_data_a),
 	.register_read_data_b(register_read_data_b)
 );

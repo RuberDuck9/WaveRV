@@ -15,12 +15,13 @@ initial begin
     $dumpfile("counter.vcd");
     $dumpvars(0, test_bench);
 
-    rst = 1;
-    #5;
     rst = 0;
+    #5;
+    rst = 1;
 
     #1000;
     $finish;
+
 end
 
 initial clk = 0;
