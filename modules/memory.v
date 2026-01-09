@@ -20,6 +20,8 @@ module memory (
 
 reg [31:0] memory[0:4095];
 
+initial $readmemh("mem.hex", memory);
+
 // ----------------- Port A -----------------
 
 always @(posedge clk_a) begin

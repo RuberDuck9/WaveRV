@@ -3,7 +3,8 @@
 // **************************************************
 
 module waverv (
-	input clk
+	input clk,
+	input rst
 );
 
 // ------ Wire Declaration By Originator -----
@@ -42,6 +43,7 @@ wire [31:0] alu_out;
 
 program_counter program_counter_inst(
 	.clk(clk),
+	.rst(rst),
 	.program_counter(program_counter)
 );
 
@@ -55,6 +57,7 @@ memory memory_inst (
 
 instruction_register instruction_register_inst (
 	.clk(clk),
+	.rst(rst),
 	.memory_read_data_a(memory_read_data_a),
 	.instruction_register(instruction_register)
 );
@@ -89,12 +92,13 @@ immediate_generator immediate_generator_inst (
 );
 
 alu alu_inst (
+	.rst(rst),
 	.alu_immediate_enable(alu_immediate_enable),
 	.register_read_data_a(register_read_data_a),
 	.register_read_data_b(register_read_data_b),
 	.immediate_data(immediate_data),
 	.alu_operation(alu_operation),
-	.shamt(shamt),
+	.alu_shamt(alu_shamt),
 	.alu_out(alu_out)
 );
 
